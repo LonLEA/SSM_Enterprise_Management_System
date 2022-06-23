@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security
+       http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <!--intercept-url指定过滤规则，
+        pattern表示对哪些url进行权限控制 access属性表示请求对应url需要什麽权限-->
+    <!--<security:http auto-config="true" use-expressions="false">
+
+        <security:intercept-url pattern="/**" access="ROLE_USER"/>
+    </security:http>
+
+    <security:authentication-manager>
+        <security:authentication-provider>
+            <security:user-service>
+                <security:user name="user" password="{noop}user" authorities="ROLE_USER"/>
+                <security:user name="admin" password="{noop}admin" authorities="ROLE_ADMIN"/>
+            </security:user-service>
+        </security:authentication-provider>
+    </security:authentication-manager>-->
+    <security:http security="none" pattern="/pages/system/login.jsp"/>
+    <security:http security="none" pattern="/css/**"/>
+    <security:http security="none" pattern="/js/**"/>
+    <security:http security="none" pattern="/img/**"/>
+    <security:http security="none" pattern="/plugins/**"/>
+
+    <security:http auto-config="true" use-expressions="false">
+        <security:intercept-url pattern="/**" access="ROLE_USER"/>
+        <security:form-login
+                login-page="/pages/system/login.jsp"
+                login-processing-url="/login.do"
+                authentication-failure-forward-url="/pages/system/failer.jsp"
+                default-target-url="/pages/main.jsp"/>
+        <security:csrf disabled="true"/>
+
+        <security:session-management invalid-session-url="/pages/main.jsp"/>
+
+        <!--logout-->
+        <security:logout invalidate-session="true"
+               logout-url="/logout.do" logout-success-url="/pages/login.jsp"/>
+    </security:http>
+
+    <security:authentication-manager>
+       <!-- <security:authentication-provider>
+            <security:user-service>
+                <security:user name="user" password="{noop}user" authorities="ROLE_USER"/>
+                <security:user name="admin" password="{noop}admin" authorities="ROLE_ADMIN"/>
+            </security:user-service>
+        </security:authentication-provider>-->
+        <security:authentication-provider user-service-ref="userService">
+            <!--配置加密方式-->
+            <security:password-encoder ref="passwordEncoder"/>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <!--配置加密类-->
+    <bean id="passwordEncoder"
+          class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+    </bean>
+</beans>

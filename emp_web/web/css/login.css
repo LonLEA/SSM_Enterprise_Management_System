@@ -1,0 +1,164 @@
+/*@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #354457;
+    color: #fff;
+    font-family: 'Muli', sans-serif;
+    position: relative;
+    height: 100vh;
+    margin: 0;
+}
+.error_message{
+    font-size: 20px;
+    font-family: 'Muli', sans-serif;
+    color: #991c16;
+    margin-top: 15px;
+}
+
+.head{
+    background-color: #354457;
+    color: #fff;
+    font-family: 'Muli', sans-serif;
+    height: 60px;
+    width: 100%;
+    align-content: center;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 12px;
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    height: 550px;
+    width: 400px;
+    padding: 20px 40px;
+    border-radius: 5px;
+    top: 10%;
+    left: 36%;
+}
+
+.container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.container a {
+    text-decoration: none;
+    color: lightblue;
+    cursor: pointer;
+}
+
+
+.btn {
+    cursor: pointer;
+    display: inline-block;
+    width: 100%;
+    background: lightblue;
+    padding: 15px;
+    font-family: inherit;
+    font-size: 16px;
+    border: 0;
+    border-radius: 5px;
+}
+
+.btn:focus {
+    outline: 0;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.text {
+    margin-top: 30px;
+}
+
+.form-control {
+    position: relative;
+    margin: 20px 0 40px;
+    width: 300px;
+}
+
+.form-control input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px #fff solid;
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 18px;
+    color: #fff;
+}
+
+.form-control input:focus,
+.form-control input:valid {
+    outline: 0;
+    border-bottom-color: lightblue;
+}
+
+.form-control label {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    pointer-events: none;
+}
+
+.form-control label span {
+    display: inline-block;
+    font-size: 18px;
+    min-width: 5px;
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form-control input:focus + label span,
+.form-control input:valid + label span {
+    color: lightblue;
+    transform: translateY(-30px);
+}
+
+.form-box{
+    position: absolute;
+    align-content: center;
+}
+
+/* 将front旋转180度 */
+.middle-flip.front {
+    transform: rotateY(180deg);
+}
+
+/* 将back旋转180度 */
+.middle-flip.back {
+    transform: rotateY(0deg);
+}
+
+.front{
+    transform: rotateY(0deg);
+}
+.back{
+    transform: rotateY(180deg);
+}
+
+.back,
+.front {
+    /* 然后设置为背面朝向用户时不可见 */
+    backface-visibility: hidden;
+    /* 我觉得用linear顺滑一点 */
+    transition: 0.3s linear;
+}
+
+/*以下两行解决浏览器记住密码后修改 input框的背景色*/
+input:-webkit-autofill , textarea:-webkit-autofill, select:-webkit-autofill {
+    -webkit-text-fill-color: #ededed !important;
+    -webkit-box-shadow: 0 0 0px 1000px transparent  inset !important;
+    background-color:transparent;
+    background-image: none;
+    transition: background-color 50000s ease-in-out 0s; //背景色透明  生效时长  过渡效果  启用时延迟的时间
+}
+input {
+    background-color:transparent;
+}

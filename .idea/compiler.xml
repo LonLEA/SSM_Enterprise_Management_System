@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="emp_web" />
+        <module name="emp_mapper" />
+        <module name="emp_service" />
+        <module name="emp_domain" />
+        <module name="emp_utils" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
