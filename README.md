@@ -1,0 +1,4 @@
+# SSM_Enterprise_Management_System
+SSM_Enterprise_Management_System
+本项目以SSM框架为主实现后端处理，使用Mysql数据库实现数据存储，完成基于JavaWeb的简单企业管理平台。
+主要功能包括登录注册、用户管理、项目管理、日常事务管理和部门管理。
